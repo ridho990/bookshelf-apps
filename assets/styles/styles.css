@@ -145,6 +145,9 @@ main {
 }
 
 /* bagian welcome user */
+.section-welcoming-span-h {
+	cursor: pointer;
+}
 
 /* ini bagian search dan list buku */
 .section-wrapper-books {
@@ -277,7 +280,8 @@ footer {
 }
 
 /* ini bagian form */
-.close-form-book {
+.close-form-book,
+.close-form-username {
 	position: absolute;
 	top: 0.3rem;
 	right: 1rem;
@@ -292,7 +296,8 @@ footer {
 	display: none;
 }
 
-.wrapper-form-book {
+.wrapper-form-book,
+.wrapper-form-username {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -309,11 +314,13 @@ footer {
 	-o-border-radius: 10px;
 }
 
-.wrapper-form-book h4 {
+.wrapper-form-book h4,
+.wrapper-form-username h4 {
 	margin-bottom: 1rem;
 }
 
-#submit {
+#submit,
+#submit-username {
 	text-align: right;
 }
 
@@ -334,7 +341,8 @@ footer {
 	font-size: 0.7rem;
 }
 
-#submit input {
+#submit input,
+#submit-username input {
 	display: block;
 	padding: 0.6rem 1rem;
 	margin-bottom: 0.7rem;

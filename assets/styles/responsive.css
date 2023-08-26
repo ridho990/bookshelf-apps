@@ -8,7 +8,8 @@
 	}
 
 	/* ini bagian form isi buku */
-	.wrapper-form-book {
+	.wrapper-form-book,
+	.wrapper-form-username {
 		width: 50%;
 	}
 }
@@ -72,7 +73,8 @@
 	}
 
 	/* ini bagian form isi buku */
-	.wrapper-form-book {
+	.wrapper-form-book,
+	.wrapper-form-username {
 		width: 80%;
 	}
 }

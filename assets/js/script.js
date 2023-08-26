@@ -4,6 +4,10 @@ const form = document.querySelector(".wrapper-form-book");
 const overlay = document.querySelector(".overlay");
 const btnCloseForm = document.querySelector(".close-form-book");
 const btnsOpenForm = document.querySelector("#button-add-book");
+// Ini untuk username
+const btnsOpenFormUsername = document.querySelector("#user-name");
+const formUsername = document.querySelector(".wrapper-form-username");
+const btnCloseFormUsername = document.querySelector(".close-form-username");
 
 const closeModal = function () {
 	form.classList.add("hidden");
@@ -19,11 +23,29 @@ btnsOpenForm.addEventListener("click", openModal);
 btnCloseForm.addEventListener("click", closeModal);
 overlay.addEventListener("click", closeModal);
 
+const closeFormUsername = function () {
+	formUsername.classList.add("hidden");
+	console.log("Close");
+	overlay.classList.add("hidden");
+};
+
+const openFormUsername = function () {
+	formUsername.classList.remove("hidden");
+	console.log("Open");
+	overlay.classList.remove("hidden");
+};
+
+btnsOpenFormUsername.addEventListener("click", openFormUsername);
+btnCloseFormUsername.addEventListener("click", closeFormUsername);
+overlay.addEventListener("click", closeFormUsername);
+
 document.addEventListener("keydown", function (e) {
 	console.log(e.key);
-	if (e.key === "Escape" && !modal.classList.contains("hidden")) {
+	if (e.key === "Escape" && !form.classList.contains("hidden")) {
 		console.log("Esc was pressed");
 		closeModal();
+	} else if (e.key === "Escape" && !formUsername.classList.contains("hidden")) {
+		closeFormUsername();
 	}
 });
 
