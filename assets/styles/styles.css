@@ -26,6 +26,7 @@ h1 {
 
 h2 {
 	font-size: 2.074rem;
+	color: #023047;
 }
 
 h3 {
@@ -42,4 +43,228 @@ h5 {
 
 p {
 	font-size: 1rem;
+}
+
+main p,
+main h3 {
+	color: #023047;
+}
+
+.padding-x {
+	padding-right: 5%;
+	padding-left: 5%;
+}
+
+.padding-y {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+
+.flex-row {
+	display: flex;
+	flex-direction: row;
+}
+
+.flex-col {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Bagian header  */
+.header {
+	width: 100%;
+	height: 100vh;
+	background: url("../images/header-image.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: #fff;
+}
+
+.header-logo {
+	position: absolute;
+	top: 0;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.header-logo img {
+	margin-right: 0.7rem;
+	width: 2.5rem;
+}
+
+.header-hero {
+	height: 100%;
+	width: 50%;
+	justify-content: center;
+}
+
+.header-hero-h-span,
+.section-welcoming-span-h {
+	color: #ffb703;
+}
+
+.p-hero {
+	line-height: 1.7rem;
+	margin-bottom: 1.5rem;
+}
+
+.header-hero a {
+	display: block;
+	width: 8.75rem;
+}
+
+.btn-hero {
+	padding: 0.7rem 1rem;
+	background-color: #02304700;
+	font-weight: 500;
+	color: #fff;
+	border: 1.5px solid #fb8500;
+	opacity: 0.9;
+	cursor: pointer;
+	outline: none;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+	transition: 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
+	-webkit-transition: 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
+	-moz-transition: 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
+	-ms-transition: 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
+	-o-transition: 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.btn-hero:hover {
+	background-color: #023047;
+	opacity: 1;
+}
+
+/* bagian welcome user */
+
+/* ini bagian search dan list buku */
+.container-search-list-books {
+	place-content: center;
+	margin-bottom: 4rem;
+}
+
+.container-search-list-books form input {
+	margin-right: 1rem;
+	width: 30rem;
+	height: 3rem;
+	font-size: 1rem;
+	padding: 0.7rem 1rem;
+	border: 2px solid #023047;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	-ms-border-radius: 50px;
+	-o-border-radius: 50px;
+}
+
+.button-add-book {
+	display: grid;
+	place-items: center;
+	padding-left: 2px;
+	width: 3rem;
+	height: 3rem;
+	border: 2px solid #ffb703;
+	border-radius: 50px;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	-ms-border-radius: 50px;
+	-o-border-radius: 50px;
+	cursor: pointer;
+}
+
+.button-add-book i {
+	font-size: 2rem;
+	font-weight: 600;
+	color: #023047;
+}
+
+.wrapper-list-books {
+	gap: 3rem;
+	align-items: flex-start;
+}
+
+.container-list-books {
+	width: 50%;
+	padding: 1.2rem 1.2rem;
+	box-shadow: 0px 0px 30px 5px rgba(0, 0, 0, 0.05);
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+}
+
+.container-list-books h3 {
+	font-weight: 600;
+	margin-bottom: 1rem;
+}
+
+.card-book {
+	align-items: center;
+	padding: 0.7rem;
+	background-color: #f2f5f8;
+	border-radius: 8px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	-ms-border-radius: 8px;
+	-o-border-radius: 8px;
+}
+
+.card-book img {
+	margin-right: 1rem;
+	width: 7rem;
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-ms-border-radius: 5px;
+	-o-border-radius: 5px;
+}
+
+.inner-card {
+	justify-content: space-between;
+	width: 100%;
+}
+
+.text-card h4 {
+	font-weight: 500;
+	margin-bottom: 0.2rem;
+	color: #023047;
+}
+
+.button-card {
+	justify-content: center;
+}
+
+.button-card button {
+	width: 40px;
+	height: 40px;
+	background-size: contain;
+	cursor: pointer;
+	border: none;
+}
+
+.button-check {
+	background-image: url("../images/checked.png");
+	margin-bottom: 10px;
+}
+
+.button-trash {
+	background-image: url("../images/trash-bin.png");
+}
+
+.button-undo {
+	background-image: url("../images/refresh-arrow.png");
+	margin-bottom: 10px;
+}
+
+/* Ini bagian footer */
+footer {
+	margin-top: 5rem;
+	background-color: #023047;
+	color: #fff;
+	text-align: center;
 }

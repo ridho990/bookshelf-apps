@@ -1,3 +1,19 @@
+@media only screen and (max-width: 1025px) {
+	.wrapper-list-books {
+		flex-direction: column;
+	}
+
+	.container-list-books {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 769px) {
+	.header-hero {
+		width: 60%;
+	}
+}
+
 @media only screen and (max-width: 431px) {
 	h1 {
 		font-size: 1.802rem;
@@ -18,5 +34,44 @@
 
 	h5 {
 		font-size: 1.125rem;
+	}
+
+	.header-hero {
+		width: 100%;
+	}
+
+	.section-welcoming-user {
+		text-align: center;
+	}
+
+	.container-list-books {
+		padding: 1rem 1rem 1.3rem;
+	}
+
+	.container-search-list-books form input {
+		width: 17.5rem;
+	}
+
+	.card-book {
+		padding: 0.5rem 0.7rem;
+	}
+
+	.card-book img {
+		width: 6rem;
+	}
+
+	.button-card button {
+		width: 30px;
+		height: 30px;
+	}
+}
+
+@media only screen and (max-width: 401px) {
+	.card-book img {
+		display: none;
+	}
+
+	.container-search-list-books form input {
+		width: 14.5rem;
 	}
 }

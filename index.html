@@ -18,8 +18,102 @@
 			rel="stylesheet"
 		/>
 		<link rel="stylesheet" href="./assets/styles/styles.css" />
+		<link rel="stylesheet" href="/assets/styles/responsive.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+			integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
 	</head>
 	<body>
+		<header class="header padding-x">
+			<div class="flex-row header-logo">
+				<img src="./assets/images/open-book.png" alt="Logo Bookshelf" />
+				<h3>Bookshelf Apps</h3>
+			</div>
+			<div class="header-hero flex-col">
+				<h1>
+					Selamat Datang Di
+					<span class="header-hero-h-span">Bookshelf</span> Apps
+				</h1>
+				<p class="p-hero">
+					Aplikasi Bookshelf adalah platform yang dirancang untuk mengelola dan
+					menyimpan koleksi buku secara digital. Pengguna dapat menggunakannya
+					untuk mencatat buku-buku yang telah mereka baca, ingin dibaca, atau
+					sedang dibaca.
+				</p>
+				<a href="#"><button class="btn-hero">Coba Sekarang</button></a>
+			</div>
+		</header>
+		<main>
+			<section class="padding-x padding-y section-welcoming-user">
+				<h2>
+					Hello,
+					<span id="user-name" class="section-welcoming-span-h">Your Name</span>
+				</h2>
+				<p>Ada <span id="books-total">...</span> buku yang belum kamu baca</p>
+			</section>
+			<section class="padding-x section-wrapper-books">
+				<div class="flex-row container-search-list-books">
+					<form>
+						<input
+							type="search"
+							name="search"
+							id="search"
+							placeholder="Cari Buku"
+						/>
+					</form>
+					<div id="button-add-book" class="button-add-book">
+						<i class="fa-solid fa-plus"></i>
+					</div>
+				</div>
+				<div class="wrapper-list-books flex-row">
+					<div class="container-list-books">
+						<h3>Belum Dibaca</h3>
+						<div class="list-books" id="books">
+							<div class="card-book flex-row">
+								<img src="./assets/images/read.jpg" alt="" />
+								<div class="inner-card flex-row">
+									<div class="text-card">
+										<h4>Ini adalah Judul Buku</h4>
+										<p>Ini nama pengarang</p>
+										<p>Ini Tanggal</p>
+									</div>
+									<div class="button-card flex-col">
+										<button class="button-check"></button>
+										<button class="button-trash"></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="container-list-books">
+						<h3>Selesai Dibaca</h3>
+						<div class="list-books" id="books-completed">
+							<div class="card-book flex-row">
+								<img src="./assets/images/read.jpg" alt="" />
+								<div class="inner-card flex-row">
+									<div class="text-card">
+										<h4>Ini adalah Judul Buku</h4>
+										<p>Ini nama pengarang</p>
+										<p>Ini Tanggal</p>
+									</div>
+									<div class="button-card flex-col">
+										<button class="button-undo"></button>
+										<button class="button-trash"></button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer class="padding-x padding-y">
+			<h5>Bookshelf Applications @ 2023, Ridho Ahmad Fauzi</h5>
+		</footer>
 		<script src="./assets/js/script.js"></script>
 	</body>
 </html>
