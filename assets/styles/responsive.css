@@ -6,6 +6,11 @@
 	.container-list-books {
 		width: 100%;
 	}
+
+	/* ini bagian form isi buku */
+	.wrapper-form-book {
+		width: 50%;
+	}
 }
 
 @media only screen and (max-width: 769px) {
@@ -40,6 +45,7 @@
 		width: 100%;
 	}
 
+	/* ini bagian list buku bacaam */
 	.section-welcoming-user {
 		text-align: center;
 	}
@@ -64,9 +70,14 @@
 		width: 30px;
 		height: 30px;
 	}
+
+	/* ini bagian form isi buku */
+	.wrapper-form-book {
+		width: 80%;
+	}
 }
 
-@media only screen and (max-width: 401px) {
+@media only screen and (max-width: 389px) {
 	.card-book img {
 		display: none;
 	}

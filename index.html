@@ -39,12 +39,12 @@
 					<span class="header-hero-h-span">Bookshelf</span> Apps
 				</h1>
 				<p class="p-hero">
-					Aplikasi Bookshelf adalah platform yang dirancang untuk mengelola dan
+					Aplikasi Bookshelf adalah plat-book yang dirancang untuk mengelola dan
 					menyimpan koleksi buku secara digital. Pengguna dapat menggunakannya
 					untuk mencatat buku-buku yang telah mereka baca, ingin dibaca, atau
 					sedang dibaca.
 				</p>
-				<a href="#"><button class="btn-hero">Coba Sekarang</button></a>
+				<a href="#"><button class="btn-style">Coba Sekarang</button></a>
 			</div>
 		</header>
 		<main>
@@ -110,6 +110,48 @@
 					</div>
 				</div>
 			</section>
+			<div class="wrapper-form-book hidden">
+				<button class="close-form-book">&times;</button>
+				<h4>Masukan Identitas Buku 📖</h4>
+				<form action="#" id="submit" class="form">
+					<div class="flex-row form-label-group">
+						<label for="title">Judul Buku</label>
+						<p id="count-character-title" class="wrapper-count-character">
+							<span id="span-count-charachter-title">30</span>/30
+						</p>
+					</div>
+					<input
+						type="text"
+						id="title"
+						name="title"
+						placeholder="Masukan Judul Buku"
+						maxlength="30"
+						required
+					/>
+					<div class="flex-row form-label-group">
+						<label for="author">Nama Pengarang</label>
+						<p id="count-character-author" class="wrapper-count-character">
+							<span id="span-count-charachter-author">30</span>/30
+						</p>
+					</div>
+					<input
+						type="text"
+						id="author"
+						name="author"
+						placeholder="Masukan Pengarang Buku"
+						maxlength="30"
+						required
+					/>
+					<div class="flex-row form-label-group">
+						<label for="title">Tanggal</label>
+					</div>
+					<input type="date" name="date" id="date" required />
+					<button class="btn-submit btn-style" type="submit" name="submit">
+						Submit
+					</button>
+				</form>
+			</div>
+			<div class="overlay hidden"></div>
 		</main>
 		<footer class="padding-x padding-y">
 			<h5>Bookshelf Applications @ 2023, Ridho Ahmad Fauzi</h5>
