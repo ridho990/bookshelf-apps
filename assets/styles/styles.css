@@ -149,6 +149,10 @@ main {
 	cursor: pointer;
 }
 
+#books-total {
+	font-weight: bold;
+}
+
 /* ini bagian search dan list buku */
 .section-wrapper-books {
 	padding-bottom: 5rem;
@@ -282,7 +286,8 @@ footer {
 
 /* ini bagian form */
 .close-form-book,
-.close-form-username {
+.close-form-username,
+.close-dialogue-remove {
 	position: absolute;
 	top: 0.3rem;
 	right: 1rem;
@@ -298,7 +303,8 @@ footer {
 }
 
 .wrapper-form-book,
-.wrapper-form-username {
+.wrapper-form-username,
+.card-dialogue-remove {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -370,6 +376,20 @@ footer {
 
 .btn-submit:hover {
 	color: #fff;
+}
+
+/* Ini bagian dialogue remove */
+.wrapper-button-dialogue {
+	margin-top: 2rem;
+	gap: 2rem;
+}
+
+.wrapper-button-dialogue button {
+	width: 50%;
+}
+
+.yes-button:hover {
+	background-color: red;
 }
 
 .overlay {

@@ -1,5 +1,6 @@
 "use strict";
 const keyUsername = "username";
+const searchInput = document.querySelector("#search");
 
 const form = document.querySelector(".wrapper-form-book");
 const overlay = document.querySelector(".overlay");
@@ -9,47 +10,72 @@ const btnsOpenForm = document.querySelector("#button-add-book");
 const btnsOpenFormUsername = document.querySelector("#user-name");
 const formUsername = document.querySelector(".wrapper-form-username");
 const btnCloseFormUsername = document.querySelector(".close-form-username");
+// ini untuk remove dialogue
+const btnOpenDialogue = document.querySelector(".button-trash");
+const dialogueRemove = document.querySelector(".card-dialogue-remove");
+const btnCloseDialogue = document.querySelector(".close-dialogue-remove");
+const noButton = document.querySelector("#no-button");
 
-const closeModal = function () {
-	form.classList.add("hidden");
+const closeModal = function (modal) {
+	modal.classList.add("hidden");
 	overlay.classList.add("hidden");
 };
 
-const openModal = function () {
-	form.classList.remove("hidden");
+const openModal = function (modal) {
+	modal.classList.remove("hidden");
 	overlay.classList.remove("hidden");
 };
 
-btnsOpenForm.addEventListener("click", openModal);
-btnCloseForm.addEventListener("click", closeModal);
-overlay.addEventListener("click", closeModal);
+//book
+btnsOpenForm.addEventListener("click", function () {
+	openModal(form);
+});
+btnCloseForm.addEventListener("click", function () {
+	closeModal(form);
+});
 
-const closeFormUsername = function () {
-	formUsername.classList.add("hidden");
-	console.log("Close");
-	overlay.classList.add("hidden");
-};
+// username
+btnsOpenFormUsername.addEventListener("click", function () {
+	openModal(formUsername);
+});
 
-const openFormUsername = function () {
-	formUsername.classList.remove("hidden");
-	console.log("Open");
-	overlay.classList.remove("hidden");
-};
+btnCloseFormUsername.addEventListener("click", function () {
+	closeModal(formUsername);
+});
 
-btnsOpenFormUsername.addEventListener("click", openFormUsername);
-btnCloseFormUsername.addEventListener("click", closeFormUsername);
-overlay.addEventListener("click", closeFormUsername);
+// Dialogue
+btnOpenDialogue.addEventListener("click", function () {
+	openModal(dialogueRemove);
+});
+
+noButton.addEventListener("click", function () {
+	closeModal(dialogueRemove);
+});
+
+btnCloseDialogue.addEventListener("click", function () {
+	closeModal(dialogueRemove);
+});
+
+overlay.addEventListener("click", function () {
+	closeModal(form);
+	closeModal(formUsername);
+	closeModal(dialogueRemove);
+});
 
 document.addEventListener("keydown", function (e) {
-	console.log(e.key);
 	if (e.key === "Escape" && !form.classList.contains("hidden")) {
-		console.log("Esc was pressed");
-		closeModal();
+		closeModal(form);
 	} else if (e.key === "Escape" && !formUsername.classList.contains("hidden")) {
-		closeFormUsername();
+		closeModal(formUsername);
+	} else if (
+		e.key === "Escape" &&
+		!dialogueRemove.classList.contains("hidden")
+	) {
+		closeModal(dialogueRemove);
 	}
 });
 
+// Count Character Title dan Author
 const countCharachterTitle = () => {
 	const totalCharacterTitle = document.getElementById("title").value.length;
 	const restCharacter = 30 - totalCharacterTitle;
@@ -105,7 +131,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		event.preventDefault();
 		addUsername();
 		loadDataUserFromStorage();
-		closeFormUsername();
+		closeModal(formUsername);
 	});
 
 	if (isStorageExist()) {
@@ -114,6 +140,8 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 		loadDataUserFromStorage();
 	}
+
+	totalBook();
 });
 
 const addUsername = () => {
@@ -126,3 +154,17 @@ const loadDataUserFromStorage = () => {
 	const username = localStorage.getItem(keyUsername);
 	document.getElementById("user-name").innerText = username;
 };
+
+searchInput.addEventListener("input", (e) => {
+	const containerBuku = document.querySelectorAll(".card-book");
+	const judulBuku = document.querySelectorAll(".text-card h4");
+	const penulis = document.querySelectorAll(".text-card > p");
+	const value = e.target.value.toLowerCase();
+
+	for (const i in containerBuku) {
+		let isVisible =
+			judulBuku[i].innerText.toLowerCase().includes(value) ||
+			penulis[i].innerText.toLowerCase().includes(value);
+		containerBuku[i].classList.toggle("hidden", !isVisible);
+	}
+});

@@ -9,7 +9,8 @@
 
 	/* ini bagian form isi buku */
 	.wrapper-form-book,
-	.wrapper-form-username {
+	.wrapper-form-username,
+	.card-dialogue-remove {
 		width: 50%;
 	}
 }
@@ -74,7 +75,8 @@
 
 	/* ini bagian form isi buku */
 	.wrapper-form-book,
-	.wrapper-form-username {
+	.wrapper-form-username,
+	.card-dialogue-remove {
 		width: 80%;
 	}
 }
