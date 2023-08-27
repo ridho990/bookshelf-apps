@@ -161,7 +161,7 @@ searchInput.addEventListener("input", (e) => {
 	const penulis = document.querySelectorAll(".text-card > p");
 	const value = e.target.value.toLowerCase();
 
-	for (const i in containerBuku) {
+	for (let i = 0; i < containerBuku.length; i++) {
 		let isVisible =
 			judulBuku[i].innerText.toLowerCase().includes(value) ||
 			penulis[i].innerText.toLowerCase().includes(value);
