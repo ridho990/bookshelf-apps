@@ -216,6 +216,7 @@ main {
 
 .card-book {
 	align-items: center;
+	margin-bottom: 1rem;
 	padding: 0.7rem;
 	background-color: #f2f5f8;
 	border-radius: 8px;
@@ -319,8 +320,8 @@ footer {
 	margin-bottom: 1rem;
 }
 
-#submit,
-#submit-username {
+#form-book,
+#form-username {
 	text-align: right;
 }
 
@@ -341,8 +342,8 @@ footer {
 	font-size: 0.7rem;
 }
 
-#submit input,
-#submit-username input {
+#form-book input,
+#form-username input {
 	display: block;
 	padding: 0.6rem 1rem;
 	margin-bottom: 0.7rem;

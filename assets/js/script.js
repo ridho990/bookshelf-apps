@@ -1,4 +1,5 @@
 "use strict";
+const keyUsername = "username";
 
 const form = document.querySelector(".wrapper-form-book");
 const overlay = document.querySelector(".overlay");
@@ -97,7 +98,31 @@ document.getElementById("author").addEventListener("blur", function () {
 	document.getElementById("count-character-author").style.visibility = "hidden";
 });
 
-document.getElementById("submit").addEventListener("submit", function (e) {
-	console.log(e);
-	e.preventDefault();
+// ini bagian untuk ganti username
+document.addEventListener("DOMContentLoaded", function () {
+	const submitFormUsername = document.getElementById("form-username");
+	submitFormUsername.addEventListener("submit", function (event) {
+		event.preventDefault();
+		addUsername();
+		loadDataUserFromStorage();
+		closeFormUsername();
+	});
+
+	if (isStorageExist()) {
+		if (localStorage.getItem(keyUsername) === null) {
+			localStorage.setItem(keyUsername, "Your Name✏️");
+		}
+		loadDataUserFromStorage();
+	}
 });
+
+const addUsername = () => {
+	const username = document.getElementById("username").value;
+	document.getElementById("user-name").value = username;
+	localStorage.setItem(keyUsername, username);
+};
+
+const loadDataUserFromStorage = () => {
+	const username = localStorage.getItem(keyUsername);
+	document.getElementById("user-name").innerText = username;
+};
