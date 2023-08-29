@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	submitFormBook.addEventListener("submit", function (event) {
 		event.preventDefault();
 		addBook();
+		resetForm();
 		closeModal(form);
 	});
 
@@ -81,27 +82,28 @@ function makeBook(bookObject) {
 	// Text Card
 	const textTitle = document.createElement("h4");
 	textTitle.innerText = bookObject.title;
+	textTitle.classList.add("card-title");
 
 	const textAuthor = document.createElement("p");
 	textAuthor.innerText = bookObject.author;
+	textAuthor.classList.add("card-author");
 
 	const textTimestamp = document.createElement("p");
 	textTimestamp.innerText = bookObject.year;
+	textTimestamp.classList.add("card-year");
 
 	const textContainer = document.createElement("div");
-	textContainer.classList.add("text-card");
+	textContainer.classList.add("text-card", "flex-col");
 	textContainer.append(textTitle, textAuthor, textTimestamp);
 
 	// button wrapper
 	const buttonWrapper = document.createElement("div");
-	console.log(buttonWrapper);
 	buttonWrapper.classList.add("button-card", "flex-col");
 
 	// Innner card (text card + button wrap)
 	const innerCard = document.createElement("div");
 	innerCard.classList.add("inner-card", "flex-row");
 	innerCard.append(textContainer, buttonWrapper);
-	console.log(innerCard);
 
 	// card utama
 	const container = document.createElement("div");
@@ -126,6 +128,16 @@ function makeBook(bookObject) {
 
 		buttonWrapper.append(undoButton, trashButton);
 	} else {
+		const editButton = document.createElement("button");
+		editButton.classList.add("button-edit");
+		editButton.addEventListener("click", function (event) {
+			const btnSubmitEdit = document.getElementById("btn-submit-edit");
+			const parent = event.target.parentElement.parentElement.parentElement;
+			btnSubmitEdit.setAttribute("data-book-id", bookObject.id);
+			getValue(parent);
+			openModal(formEdit);
+		});
+
 		const checkButton = document.createElement("button");
 		checkButton.classList.add("button-check");
 
@@ -140,11 +152,22 @@ function makeBook(bookObject) {
 			checkAndRemove(bookObject);
 		});
 
-		buttonWrapper.append(checkButton, trashButton);
+		buttonWrapper.append(editButton, checkButton, trashButton);
 	}
 
 	return container;
 }
+
+document
+	.getElementById("edit-book")
+	.addEventListener("submit", function (event) {
+		event.preventDefault();
+		const bookId = parseInt(
+			event.target.querySelector("[data-book-id]").getAttribute("data-book-id")
+		);
+		editBookContent(bookId);
+		closeModal(formEdit);
+	});
 
 function addBookToCompleted(bookId) {
 	const bookTarget = findBook(bookId);
@@ -152,6 +175,16 @@ function addBookToCompleted(bookId) {
 	if (bookTarget == null) return;
 
 	bookTarget.isCompleted = true;
+	document.dispatchEvent(new Event(RENDER_EVENT));
+	saveData();
+}
+
+function editBookContent(bookId) {
+	const bookTarget = findBook(bookId);
+	if (bookTarget == null) return;
+	bookTarget.title = document.getElementById("title-edit").value;
+	bookTarget.author = document.getElementById("author-edit").value;
+	bookTarget.year = document.getElementById("date-edit").value;
 	document.dispatchEvent(new Event(RENDER_EVENT));
 	saveData();
 }
@@ -191,10 +224,25 @@ function findBookIndex(bookId) {
 			return index;
 		}
 	}
-
 	return -1;
 }
 
+function resetForm() {
+	document.getElementById("title").value = "";
+	document.getElementById("author").value = "";
+	document.getElementById("date").value = "";
+}
+
+function getValue(elemen) {
+	document.getElementById("title-edit").value =
+		elemen.querySelector(".card-title").innerText;
+	document.getElementById("author-edit").value =
+		elemen.querySelector(".card-author").innerText;
+	document.getElementById("date-edit").value =
+		elemen.querySelector(".card-year").innerText;
+}
+
+// Storage
 function saveData() {
 	if (isStorageExist()) {
 		const parsed = JSON.stringify(books);

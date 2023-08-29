@@ -246,6 +246,10 @@ main {
 	width: 100%;
 }
 
+.text-card {
+	justify-content: center;
+}
+
 .text-card h4 {
 	font-weight: 500;
 	margin-bottom: 0.2rem;
@@ -257,11 +261,16 @@ main {
 }
 
 .button-card button {
-	width: 40px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 	background-size: contain;
 	cursor: pointer;
 	border: none;
+}
+
+.button-edit {
+	background-image: url("../images/pen.png");
+	margin-bottom: 10px;
 }
 
 .button-check {
@@ -288,7 +297,8 @@ footer {
 /* ini bagian form */
 .close-form-book,
 .close-form-username,
-.close-dialogue-remove {
+.close-dialogue-remove,
+.close-edit-book {
 	position: absolute;
 	top: 0.3rem;
 	right: 1rem;
@@ -305,7 +315,8 @@ footer {
 
 .wrapper-form-book,
 .wrapper-form-username,
-.card-dialogue-remove {
+.card-dialogue-remove,
+.wrapper-edit-book {
 	position: fixed;
 	top: 50%;
 	left: 50%;
@@ -323,12 +334,14 @@ footer {
 }
 
 .wrapper-form-book h4,
-.wrapper-form-username h4 {
+.wrapper-form-username h4,
+.wrapper-edit-book h4 {
 	margin-bottom: 1rem;
 }
 
 #form-book,
-#form-username {
+#form-username,
+#edit-book {
 	text-align: right;
 }
 
@@ -344,13 +357,16 @@ footer {
 	opacity: 0.9;
 }
 
-.wrapper-count-character {
+.wrapper-count-character,
+.wrapper-count-username,
+.wrapper-count-character-edit {
 	visibility: hidden;
 	font-size: 0.7rem;
 }
 
 #form-book input,
-#form-username input {
+#form-username input,
+#edit-book input {
 	display: block;
 	padding: 0.6rem 1rem;
 	margin-bottom: 0.7rem;

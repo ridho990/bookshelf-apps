@@ -2,10 +2,15 @@
 const keyUsername = "username";
 const searchInput = document.querySelector("#search");
 
+const formInput = document.querySelector(".form-book");
 const form = document.querySelector(".wrapper-form-book");
 const overlay = document.querySelector(".overlay");
 const btnCloseForm = document.querySelector(".close-form-book");
 const btnsOpenForm = document.querySelector("#button-add-book");
+
+const btnEdit = document.querySelector(".button-edit");
+const formEdit = document.querySelector(".wrapper-edit-book");
+const btnCloseEdit = document.querySelector(".close-edit-book");
 // Ini untuk username
 const btnsOpenFormUsername = document.querySelector("#user-name");
 const formUsername = document.querySelector(".wrapper-form-username");
@@ -26,103 +31,145 @@ const openModal = function (modal) {
 	overlay.classList.remove("hidden");
 };
 
-//book
-btnsOpenForm.addEventListener("click", function () {
-	openModal(form);
-});
-btnCloseForm.addEventListener("click", function () {
-	closeModal(form);
-});
+function funOnClick(target, funcModal, modal) {
+	target.addEventListener("click", function () {
+		funcModal(modal);
+	});
+}
+
+// Form Input Buku
+funOnClick(btnsOpenForm, openModal, form);
+funOnClick(btnCloseForm, closeModal, form);
+funOnClick(btnCloseEdit, closeModal, formEdit);
 
 // username
-btnsOpenFormUsername.addEventListener("click", function () {
-	openModal(formUsername);
-});
-
-btnCloseFormUsername.addEventListener("click", function () {
-	closeModal(formUsername);
-});
+funOnClick(btnsOpenFormUsername, openModal, formUsername);
+funOnClick(btnCloseFormUsername, closeModal, formUsername);
 
 // Dialogue
-btnOpenDialogue.addEventListener("click", function () {
-	openModal(dialogueRemove);
-});
-
-noButton.addEventListener("click", function () {
-	closeModal(dialogueRemove);
-});
-
-btnCloseDialogue.addEventListener("click", function () {
-	closeModal(dialogueRemove);
-});
+funOnClick(noButton, closeModal, dialogueRemove);
+funOnClick(btnCloseDialogue, closeModal, dialogueRemove);
 
 overlay.addEventListener("click", function () {
 	closeModal(form);
 	closeModal(formUsername);
 	closeModal(dialogueRemove);
+	closeModal(formEdit);
 });
 
+function isEscapeAndHidden(e, modal) {
+	return e.key === "Escape" && !modal.classList.contains("hidden");
+}
+
 document.addEventListener("keydown", function (e) {
-	if (e.key === "Escape" && !form.classList.contains("hidden")) {
+	if (isEscapeAndHidden(e, form)) {
 		closeModal(form);
-	} else if (e.key === "Escape" && !formUsername.classList.contains("hidden")) {
+	} else if (isEscapeAndHidden(e, formUsername)) {
 		closeModal(formUsername);
-	} else if (
-		e.key === "Escape" &&
-		!dialogueRemove.classList.contains("hidden")
-	) {
+	} else if (isEscapeAndHidden(e, dialogueRemove)) {
 		closeModal(dialogueRemove);
+	} else if (isEscapeAndHidden(e, formEdit)) {
+		closeModal(formEdit);
 	}
 });
 
 // Count Character Title dan Author
-const countCharachterTitle = () => {
-	const totalCharacterTitle = document.getElementById("title").value.length;
-	const restCharacter = 30 - totalCharacterTitle;
-	document.getElementById("span-count-charachter-title").innerText =
-		restCharacter;
-	if (restCharacter > 6) {
-		document.getElementById("count-character-title").style.color = "#023047";
-	} else {
-		document.getElementById("count-character-title").style.color = "red";
-	}
-};
+function countCharacter(idInputForm, idSpanRestValue, idWrapperRestValue) {
+	document.getElementById(idInputForm).addEventListener("input", function () {
+		const totalCharacterTitle =
+			document.getElementById(idInputForm).value.length;
+		const restCharacter = 30 - totalCharacterTitle;
+		document.getElementById(idSpanRestValue).innerText = restCharacter;
+		if (restCharacter > 6) {
+			document.getElementById(idWrapperRestValue).style.color = "#023047";
+		} else {
+			document.getElementById(idWrapperRestValue).style.color = "red";
+		}
+	});
+}
 
-const countCharachterAuthor = () => {
-	const totalCharacterAuthor = document.getElementById("author").value.length;
-	const restCharacter = 30 - totalCharacterAuthor;
-	document.getElementById("span-count-charachter-author").innerText =
-		restCharacter;
-	if (restCharacter > 6) {
-		document.getElementById("count-character-author").style.color = "#023047";
-	} else {
-		document.getElementById("count-character-author").style.color = "red";
-	}
-};
+function visibilityRestCharacter(
+	idInputForm,
+	idWrapperRestValue,
+	typeEvent,
+	attrValue
+) {
+	document.getElementById(idInputForm).addEventListener(typeEvent, function () {
+		document.getElementById(idWrapperRestValue).style.visibility = attrValue;
+	});
+}
 
-document.getElementById("title").addEventListener("focus", function () {
-	document.getElementById("count-character-title").style.visibility = "visible";
-});
+// visibilityRestCharacter("id tag input terjadinya event", "id span yang membungkus sisa karakter (yang diubah)", "tipe event", "atribut yang diterapkan pada wrapper")
+visibilityRestCharacter("title", "count-character-title", "focus", "visible");
+visibilityRestCharacter("author", "count-character-author", "focus", "visible");
+visibilityRestCharacter("title", "count-character-title", "blur", "hidden");
+visibilityRestCharacter("author", "count-character-author", "blur", "hidden");
 
-document.getElementById("author").addEventListener("focus", function () {
-	document.getElementById("count-character-author").style.visibility =
-		"visible";
-});
+// countCharacter("id tag input (yang sedang diketik)", "ini tag span yang menyimpan nilai update sisa karakter", "id span yang membungkus sisa karakter (yang diubah)")
+countCharacter("title", "span-count-charachter-title", "count-character-title");
+countCharacter(
+	"author",
+	"span-count-charachter-author",
+	"count-character-author"
+);
 
-document
-	.getElementById("title")
-	.addEventListener("input", countCharachterTitle);
-document
-	.getElementById("author")
-	.addEventListener("input", countCharachterAuthor);
+// Edit Form
+visibilityRestCharacter(
+	"title-edit",
+	"count-character-title-edit",
+	"focus",
+	"visible"
+);
+visibilityRestCharacter(
+	"author-edit",
+	"count-character-author-edit",
+	"focus",
+	"visible"
+);
+visibilityRestCharacter(
+	"title-edit",
+	"count-character-title-edit",
+	"blur",
+	"hidden"
+);
+visibilityRestCharacter(
+	"author-edit",
+	"count-character-author-edit",
+	"blur",
+	"hidden"
+);
 
-document.getElementById("title").addEventListener("blur", function () {
-	document.getElementById("count-character-title").style.visibility = "hidden";
-});
+countCharacter(
+	"title-edit",
+	"span-count-charachter-title-edit",
+	"count-character-title-edit"
+);
+countCharacter(
+	"author-edit",
+	"span-count-charachter-author-edit",
+	"count-character-author-edit"
+);
 
-document.getElementById("author").addEventListener("blur", function () {
-	document.getElementById("count-character-author").style.visibility = "hidden";
-});
+// username
+visibilityRestCharacter(
+	"username",
+	"count-character-username",
+	"focus",
+	"visible"
+);
+
+visibilityRestCharacter(
+	"username",
+	"count-character-username",
+	"blur",
+	"hidden"
+);
+
+countCharacter(
+	"username",
+	"span-count-character-username",
+	"count-character-username"
+);
 
 // ini bagian untuk ganti username
 document.addEventListener("DOMContentLoaded", function () {
@@ -140,8 +187,6 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 		loadDataUserFromStorage();
 	}
-
-	totalBook();
 });
 
 const addUsername = () => {
@@ -155,10 +200,11 @@ const loadDataUserFromStorage = () => {
 	document.getElementById("user-name").innerText = username;
 };
 
+// Bagian Search
 searchInput.addEventListener("input", (e) => {
 	const containerBuku = document.querySelectorAll(".card-book");
-	const judulBuku = document.querySelectorAll(".text-card h4");
-	const penulis = document.querySelectorAll(".text-card > p");
+	const judulBuku = document.querySelectorAll(".card-title");
+	const penulis = document.querySelectorAll(".card-author");
 	const value = e.target.value.toLowerCase();
 
 	for (let i = 0; i < containerBuku.length; i++) {

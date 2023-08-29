@@ -39,7 +39,7 @@
 					<span class="header-hero-h-span">Bookshelf</span> Apps
 				</h1>
 				<p class="p-hero">
-					Aplikasi Bookshelf adalah aplikasi yang dirancang untuk mengelola dan
+					Aplikasi Bookshelf adalah plat-book yang dirancang untuk mengelola dan
 					menyimpan koleksi buku secara digital. Pengguna dapat menggunakannya
 					untuk mencatat buku-buku yang telah mereka baca, ingin dibaca, atau
 					sedang dibaca.
@@ -75,7 +75,7 @@
 					<div class="container-list-books">
 						<h3>Belum Dibaca</h3>
 						<div class="list-books" id="books">
-							<div class="card-book flex-row">
+							<!-- <div class="card-book flex-row">
 								<img src="./assets/images/read.jpg" alt="" />
 								<div class="inner-card flex-row">
 									<div class="text-card">
@@ -84,17 +84,18 @@
 										<p>Ini Tanggal</p>
 									</div>
 									<div class="button-card flex-col">
+										<button class="button-edit"></button>
 										<button class="button-check"></button>
 										<button class="button-trash"></button>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 					<div class="container-list-books">
 						<h3>Selesai Dibaca</h3>
 						<div class="list-books" id="books-completed">
-							<div class="card-book flex-row">
+							<!-- <div class="card-book flex-row">
 								<img src="./assets/images/read.jpg" alt="" />
 								<div class="inner-card flex-row">
 									<div class="text-card">
@@ -107,94 +108,143 @@
 										<button class="button-trash"></button>
 									</div>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 				</div>
 			</section>
-			<div class="wrapper-form-book hidden">
-				<button class="close-form-book">&times;</button>
-				<h4>Masukan Identitas Buku 📖</h4>
-				<form action="#" id="form-book" class="form">
-					<div class="flex-row form-label-group">
-						<label for="title">Judul Buku</label>
-						<p id="count-character-title" class="wrapper-count-character">
-							<span id="span-count-charachter-title">30</span>/30
-						</p>
-					</div>
-					<input
-						type="text"
-						id="title"
-						name="title"
-						placeholder="Masukan Judul Buku"
-						maxlength="30"
-						required
-					/>
-					<div class="flex-row form-label-group">
-						<label for="author">Nama Pengarang</label>
-						<p id="count-character-author" class="wrapper-count-character">
-							<span id="span-count-charachter-author">30</span>/30
-						</p>
-					</div>
-					<input
-						type="text"
-						id="author"
-						name="author"
-						placeholder="Masukan Pengarang Buku"
-						maxlength="30"
-						required
-					/>
-					<div class="flex-row form-label-group">
-						<label for="title">Tanggal</label>
-					</div>
-					<input type="date" name="date" id="date" required />
-					<button class="btn-submit btn-style" type="submit" name="submit">
-						Submit
-					</button>
-				</form>
-			</div>
-			<div class="wrapper-form-username hidden">
-				<button class="close-form-username">&times;</button>
-				<h4>Edit Nama Kamu 🎭</h4>
-				<form action="#" id="form-username" class="form">
-					<div class="flex-row form-label-group">
-						<label for="username">Username</label>
-					</div>
-					<input
-						type="text"
-						id="username"
-						name="username"
-						placeholder="Masukan Username"
-						maxlength="30"
-						required
-					/>
-					<button class="btn-submit btn-style" type="submit" name="submit">
-						Submit
-					</button>
-				</form>
-			</div>
-			<div class="hidden card-dialogue-remove">
-				<button class="close-dialogue-remove">&times;</button>
-				<h4>Apakah Anda Yakin Ingin Hapus Buku ini? ⚠️</h4>
-				<div class="wrapper-button-dialogue flex-row">
-					<button
-						id="yes-button"
-						class="response yes-button btn-style btn-submit"
-						value="1"
-					>
-						Ya
-					</button>
-					<button
-						id="no-button"
-						class="response no-button btn-style btn-submit"
-						value="0"
-					>
-						Tidak
-					</button>
-				</div>
-			</div>
-			<div class="overlay hidden"></div>
 		</main>
+		<div class="wrapper-form-book hidden">
+			<button class="close-form-book">&times;</button>
+			<h4>Masukan Identitas Buku 📖</h4>
+			<form action="#" id="form-book" class="form-book">
+				<div class="flex-row form-label-group">
+					<label for="title">Judul Buku</label>
+					<p id="count-character-title" class="wrapper-count-character">
+						<span id="span-count-charachter-title">30</span>/30
+					</p>
+				</div>
+				<input
+					type="text"
+					id="title"
+					name="title"
+					placeholder="Masukan Judul Buku"
+					maxlength="30"
+					required
+				/>
+				<div class="flex-row form-label-group">
+					<label for="author">Nama Pengarang</label>
+					<p id="count-character-author" class="wrapper-count-character">
+						<span id="span-count-charachter-author">30</span>/30
+					</p>
+				</div>
+				<input
+					type="text"
+					id="author"
+					name="author"
+					placeholder="Masukan Pengarang Buku"
+					maxlength="30"
+					required
+				/>
+				<div class="flex-row form-label-group">
+					<label for="title">Tanggal</label>
+				</div>
+				<input type="date" name="date" id="date" required />
+				<button class="btn-submit btn-style" type="submit" name="submit">
+					Submit
+				</button>
+			</form>
+		</div>
+		<div class="hidden wrapper-edit-book hidden">
+			<button class="close-edit-book">&times;</button>
+			<h4>Edit Identitas Buku 📖</h4>
+			<form action="#" id="edit-book" class="form">
+				<div class="flex-row form-label-group">
+					<label for="title">Judul Buku</label>
+					<p id="count-character-title-edit" class="wrapper-count-character">
+						<span id="span-count-charachter-title-edit">30</span>/30
+					</p>
+				</div>
+				<input
+					type="text"
+					id="title-edit"
+					name="title"
+					placeholder="Masukan Judul Buku"
+					maxlength="30"
+					required
+				/>
+				<div class="flex-row form-label-group">
+					<label for="author">Nama Pengarang</label>
+					<p id="count-character-author-edit" class="wrapper-count-character">
+						<span id="span-count-charachter-author-edit">30</span>/30
+					</p>
+				</div>
+				<input
+					type="text"
+					id="author-edit"
+					name="author"
+					placeholder="Masukan Pengarang Buku"
+					maxlength="30"
+					required
+				/>
+				<div class="flex-row form-label-group">
+					<label for="title">Tanggal</label>
+				</div>
+				<input type="date" name="date" id="date-edit" required />
+				<button
+					id="btn-submit-edit"
+					class="btn-submit btn-style"
+					type="submit"
+					name="submit"
+				>
+					Submit
+				</button>
+			</form>
+		</div>
+		<div class="wrapper-form-username hidden">
+			<button class="close-form-username">&times;</button>
+			<h4>Edit Nama Kamu 🎭</h4>
+			<form action="#" id="form-username" class="form">
+				<div class="flex-row form-label-group">
+					<label for="username">Username</label>
+				</div>
+				<p id="count-character-username" class="wrapper-count-username">
+					<span id="span-count-character-username">30</span>/30
+				</p>
+				<input
+					type="text"
+					id="username"
+					name="username"
+					placeholder="Masukan Username"
+					maxlength="30"
+					required
+				/>
+				<button class="btn-submit btn-style" type="submit" name="submit">
+					Submit
+				</button>
+			</form>
+		</div>
+		<div class="hidden card-dialogue-remove">
+			<button class="close-dialogue-remove">&times;</button>
+			<h4>Apakah Anda Yakin Ingin Hapus Buku ini? ⚠️</h4>
+			<div class="wrapper-button-dialogue flex-row">
+				<button
+					id="yes-button"
+					class="response yes-button btn-style btn-submit"
+					value="1"
+				>
+					Ya
+				</button>
+				<button
+					id="no-button"
+					class="response no-button btn-style btn-submit"
+					value="0"
+				>
+					Tidak
+				</button>
+			</div>
+		</div>
+		<div class="overlay hidden"></div>
 		<footer class="padding-x padding-y">
 			<h5>Bookshelf Applications @ 2023, Ridho Ahmad Fauzi</h5>
 		</footer>
