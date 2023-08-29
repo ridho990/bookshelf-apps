@@ -68,6 +68,10 @@
 		width: 6rem;
 	}
 
+	.text-card h4.card-title {
+		font-size: 1.1rem;
+	}
+
 	.button-card button {
 		width: 30px;
 		height: 30px;
@@ -76,7 +80,8 @@
 	/* ini bagian form isi buku */
 	.wrapper-form-book,
 	.wrapper-form-username,
-	.card-dialogue-remove {
+	.card-dialogue-remove,
+	.wrapper-edit-book {
 		width: 80%;
 	}
 }
