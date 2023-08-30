@@ -169,6 +169,20 @@ document
 		closeModal(formEdit);
 	});
 
+document
+	.getElementById("yes-button")
+	.addEventListener("click", function (event) {
+		const bookId = parseInt(event.target.getAttribute("data-book-id-remove"));
+		removeBookFromCompleted(bookId);
+		closeModal(dialogueRemove);
+	});
+
+function checkAndRemove(bookObject) {
+	openModal(dialogueRemove);
+	const btnYes = document.getElementById("yes-button");
+	btnYes.setAttribute("data-book-id-remove", bookObject.id);
+}
+
 function addBookToCompleted(bookId) {
 	const bookTarget = findBook(bookId);
 
@@ -256,14 +270,6 @@ function isStorageExist() /* boolean */ {
 		return false;
 	}
 	return true;
-}
-
-function checkAndRemove(bookObject) {
-	openModal(dialogueRemove);
-	document.getElementById("yes-button").addEventListener("click", function () {
-		removeBookFromCompleted(bookObject.id);
-		closeModal(dialogueRemove);
-	});
 }
 
 function loadDataFromStorage() {
