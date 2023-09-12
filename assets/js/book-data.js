@@ -163,6 +163,8 @@ document
 	.addEventListener("submit", function (event) {
 		event.preventDefault();
 		const bookId = parseInt(
+			// kalau ini tuh targetnya form (yang berisi button) bukan button secara langsung
+			// makanya dibutuhkan selector
 			event.target.querySelector("[data-book-id]").getAttribute("data-book-id")
 		);
 		editBookContent(bookId);
@@ -172,6 +174,7 @@ document
 document
 	.getElementById("yes-button")
 	.addEventListener("click", function (event) {
+		// kalau ini sudah di button secara langsung sehingga tidak butuh selector
 		const bookId = parseInt(event.target.getAttribute("data-book-id-remove"));
 		removeBookFromCompleted(bookId);
 		closeModal(dialogueRemove);
