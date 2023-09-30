@@ -26,7 +26,8 @@ document.addEventListener("DOMContentLoaded", function () {
 function addBook() {
 	const title = document.getElementById("title").value;
 	const author = document.getElementById("author").value;
-	const year = document.getElementById("date").value;
+	const date = document.getElementById("date").value;
+	const year = dateToNumber(date);
 
 	const generatedID = generateId();
 	const bookObject = generateBookObject(
@@ -45,6 +46,11 @@ function generateId() {
 	return +new Date();
 }
 
+function dateToNumber(date) {
+	const dateNumber = new Date(date);
+	return dateNumber.getTime();
+}
+
 function generateBookObject(id, title, author, year, isCompleted) {
 	return {
 		id,
@@ -60,6 +66,7 @@ document.addEventListener(RENDER_EVENT, function () {
 	uncompletedBookList.innerHTML = "";
 	const completedBookList = document.getElementById("books-completed");
 	completedBookList.innerHTML = "";
+	console.log(books);
 
 	for (const bookItem of books) {
 		const bookElement = makeBook(bookItem);
@@ -72,6 +79,17 @@ document.addEventListener(RENDER_EVENT, function () {
 
 	totalBook();
 });
+
+function numberToDate(number) {
+	const date = new Date(number);
+	return date
+		.toLocaleDateString("id-ID", {
+			day: "2-digit",
+			month: "2-digit",
+			year: "numeric",
+		})
+		.replace(/\//g, "-");
+}
 
 function makeBook(bookObject) {
 	const imageCard = document.createElement("img");
@@ -89,7 +107,7 @@ function makeBook(bookObject) {
 	textAuthor.classList.add("card-author");
 
 	const textTimestamp = document.createElement("p");
-	textTimestamp.innerText = bookObject.year;
+	textTimestamp.innerText = numberToDate(bookObject.year);
 	textTimestamp.classList.add("card-year");
 
 	const textContainer = document.createElement("div");
